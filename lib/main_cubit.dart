@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:to_do_app_with_cubit_or_bloc/logic/task_cubit.dart';
+import 'package:to_do_app_with_cubit_or_bloc/logic/cubit/task_cubit.dart';
 
 void main() {
   runApp(MyApp());
