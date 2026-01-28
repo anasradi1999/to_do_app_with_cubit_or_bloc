@@ -1,10 +1,11 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
-import '../model/TaskModel.dart';
 
-part 'task_state.dart';
+import '../../model/TaskModel.dart';
+
+part 'tasks_state.dart';
 
 class TaskCubit extends Cubit<TaskState> {
   TaskCubit() : super(InitTask());
@@ -29,5 +30,5 @@ class TaskCubit extends Cubit<TaskState> {
       return task.id == id ? task.copyWith(isDone: !task.isDone) : task;
     }).toList();
     emit(UpdateTake(newList));
-    }
+  }
 }

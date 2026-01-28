@@ -1,16 +1,64 @@
-# to_do_app_with_cubit_or_bloc
+# ✅ To Do App with Cubit & Bloc (Flutter Flavors)
 
-A new Flutter project.
+A Flutter To-Do application built to **compare and demonstrate state management using Cubit and Bloc** within the same project, using **Flavors** to switch between implementations.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📌 Project Overview
 
-A few resources to get you started if this is your first Flutter project:
+This project is a simple yet powerful **To-Do App** that allows users to:
+- Add tasks
+- Mark tasks as completed
+- Manage tasks efficiently
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The main goal of this project is to **show the architectural and logical differences between Cubit and Bloc** by providing two separate app flavors:
+- **Cubit Version**
+- **Bloc Version**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Each flavor runs the same UI but with a different state management approach.
+
+---
+
+## 🎯 Project Goals
+
+- Practice and understand **Flutter Bloc & Cubit**
+- Compare **Cubit vs Bloc** in real use cases
+- Learn how to use **Flutter Flavors**
+- Build a clean, scalable Flutter architecture
+- Create a strong portfolio project
+
+---
+
+## 🧠 State Management Approaches
+
+### 🔹 Cubit Version
+- Simpler logic
+- Less boilerplate
+- Direct state emission
+- Ideal for small to medium apps
+
+### 🔹 Bloc Version
+- Event-driven architecture
+- Clear separation of concerns
+- More scalable for large applications
+- Better control over business logic
+
+---
+
+## 🧪 Flavors Used
+
+The app contains **two flavors**:
+
+| Flavor Name | State Management |
+|-------|-----------------|------------|
+| Cubit | `main_cubit.dart` |
+| Bloc | `main_bloc.dart` |
+
+---
+
+## 📦 Packages Used
+
+```yaml
+flutter_bloc: ^9.1.1
+equatable: ^2.0.8
+uuid: ^4.5.2
