@@ -55,6 +55,12 @@ The app contains **two flavors**:
 | Bloc | `main_bloc.dart` |
 
 ---
+### 🔹 Hydrated Bloc
+- Hydrated Bloc State Persistence & Restoration
+- Hydrated Bloc automatically saves the Bloc/Cubit state to local storage. 
+- It allows state restoration upon application restart without any additional code.
+
+---
 
 ## 📦 Packages Used
 
@@ -62,3 +68,5 @@ The app contains **two flavors**:
 flutter_bloc: ^9.1.1
 equatable: ^2.0.8
 uuid: ^4.5.2
+hydrated_bloc: ^10.1.1
+path_provider: ^2.1.5

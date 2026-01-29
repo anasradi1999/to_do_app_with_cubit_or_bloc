@@ -1,31 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:to_do_app_with_cubit_or_bloc/logic/cubit/task_cubit.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // بنينا التخزين persisted storage
+  HydratedBloc.storage = await HydratedStorage.build(
+        storageDirectory: HydratedStorageDirectory((await getApplicationDocumentsDirectory()).path),
+  );
+
+  runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   TextEditingController titleController = TextEditingController();
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-            title: const Text('To Do App',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.w600,
-              ),
+          title: const Text(
+            'To Do App',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
             ),
-            centerTitle: true,
-            backgroundColor: Colors.deepPurple
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.deepPurple,
         ),
         body: BlocProvider(
           create: (context) => TaskCubit(),
@@ -42,7 +59,7 @@ class MyApp extends StatelessWidget {
                           hintText: 'Enter Task',
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       ElevatedButton(
                         onPressed: () {
                           if (titleController.text.isEmpty) return;
@@ -51,9 +68,9 @@ class MyApp extends StatelessWidget {
                           );
                           titleController.clear();
                         },
-                        child: Text('Add Task'),
+                        child: const Text('Add Task'),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Expanded(
                         child: ListView.builder(
                           itemCount: state.taskList.length,
@@ -74,7 +91,7 @@ class MyApp extends StatelessWidget {
                                     state.taskList[index].id,
                                   );
                                 },
-                                icon: Icon(Icons.delete),
+                                icon: const Icon(Icons.delete),
                               ),
                             );
                           },

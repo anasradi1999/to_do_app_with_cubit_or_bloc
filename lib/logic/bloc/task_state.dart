@@ -17,6 +17,6 @@ final class InitTask extends TaskState {
 
 }
 
-final class UpdateTake extends TaskState {
-  const UpdateTake(super.tasks);
+final class UpdateTask extends TaskState {
+  const UpdateTask(super.tasks);
 }
