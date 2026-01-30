@@ -14,6 +14,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
       final taskModel = TaskModel(
         id: Uuid().v4(),
         title: event.title,
+        descriptions: '',
         isDone: false,
       );
       emit(UpdateTask([...state.taskList, taskModel]));

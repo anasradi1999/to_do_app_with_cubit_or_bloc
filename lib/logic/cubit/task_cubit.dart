@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
@@ -11,8 +10,8 @@ part 'tasks_state.dart';
 class TaskCubit extends HydratedCubit<TaskState> {
   TaskCubit() : super(InitTask());
 
-  void addTask(String title) {
-    final taskModel = TaskModel(id: Uuid().v4(), title: title, isDone: false);
+  void addTask(String title,String description,bool isDone) {
+    final taskModel = TaskModel(id: Uuid().v4(), title: title,descriptions: description, isDone: isDone);
     emit(UpdateTask([...state.taskList, taskModel]));
   }
 
@@ -25,6 +24,17 @@ class TaskCubit extends HydratedCubit<TaskState> {
       return task.id == id ? task.copyWith(isDone: !task.isDone) : task;
     }).toList();
     emit(UpdateTask(newList));
+  }
+
+  void editTask(TaskModel updatedTask) {
+    final updatedList = state.taskList.map((task) {
+      if (task.id == updatedTask.id) {
+        return updatedTask;
+      }
+      return task;
+    }).toList();
+
+    emit(UpdateTask(updatedList));
   }
 
   @override
